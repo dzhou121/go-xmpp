@@ -65,6 +65,16 @@ type Message struct {
 	Body    string   `xml:"body,omitempty"`
 }
 
+type JingleX struct {
+}
+
+type JingleC struct {
+	Ext  string `xml:"ext,attr"`
+	Hash string `xml:"hash,attr"`
+	Node string `xml:"node,attr"`
+	Ver  string `xml:"ver,attr"`
+}
+
 // XMPP <presence/> stanza.
 type Presence struct {
 	XMLName xml.Name `xml:"presence"`
@@ -72,6 +82,8 @@ type Presence struct {
 	Type    string   `xml:"type,attr,omitempty"`
 	To      string   `xml:"to,attr,omitempty"`
 	From    string   `xml:"from,attr,omitempty"`
+	X       JingleX  `xml:"http://jabber.org/protocol/muc x"`
+	C       JingleC  `xml:"http://jabber.org/protocol/caps c"`
 	Payload string   `xml:",innerxml"`
 }
 
