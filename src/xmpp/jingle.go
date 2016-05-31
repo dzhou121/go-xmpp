@@ -59,7 +59,7 @@ type JingleFingerprint struct {
 type JingleTransport struct {
 	Pwd         string             `xml:"pwd,attr"`
 	Ufrag       string             `xml:"ufrag,attr"`
-	Fingerprint *JingleFingerprint `xml:"fingerprint"`
+	Fingerprint *JingleFingerprint `xml:"urn:xmpp:jingle:apps:dtls:0 fingerprint"`
 	Candidates  []*Candidate       `xml:"candidate"`
 }
 
