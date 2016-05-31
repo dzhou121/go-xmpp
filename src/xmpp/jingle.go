@@ -5,8 +5,8 @@ import "encoding/xml"
 type Jingle struct {
 	XMLName   xml.Name `xml:"urn:xmpp:jingle:1 jingle"`
 	Action    string   `xml:"action,attr"`
-	Initiator string   `xml:"initiator,attr"`
-	Responder string   `xml:"responder,attr"`
+	Initiator string   `xml:"initiator,attr,omitempty"`
+	Responder string   `xml:"responder,attr,omitempty"`
 	Sid       string   `xml:"sid,attr"`
 
 	Contents []*JingleContent `xml:"content"`
@@ -72,8 +72,8 @@ type Candidate struct {
 	Port       string `xml:"port,attr"`
 	Priority   string `xml:"priority,attr"`
 	Protocol   string `xml:"protocol,attr"`
-	RelAddr    string `xml:"rel-addr,attr"`
-	RelPort    string `xml:"rel-port,attr"`
+	RelAddr    string `xml:"rel-addr,attr,omitempty"`
+	RelPort    string `xml:"rel-port,attr,omitempty"`
 	Type       string `xml:"type,attr"`
 }
 
