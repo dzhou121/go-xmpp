@@ -45,7 +45,7 @@ type PayloadType struct {
 	Id        string             `xml:"id,attr"`
 	Name      string             `xml:"name,attr"`
 	ClockRate string             `xml:"clockrate,attr"`
-	Channels  string             `xml:"channels,attr"`
+	Channels  string             `xml:"channels,attr,omitempty"`
 	Parameter []*JingleParameter `xml:"parameter"`
 }
 
