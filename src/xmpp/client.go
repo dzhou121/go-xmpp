@@ -147,10 +147,19 @@ type authHandler struct {
 
 var authHandlers = []authHandler{
 	{"PLAIN", authenticatePlain},
+	{"ANONYMOUS", authenticateAnonymous},
 }
 
 func authenticatePlain(stream *Stream, user, password string) error {
 	auth := saslAuth{Mechanism: "PLAIN", Text: saslEncodePlain(user, password)}
+	if err := stream.Send(&auth); err != nil {
+		return err
+	}
+	return authenticateResponse(stream)
+}
+
+func authenticateAnonymous(stream *Stream, user, password string) error {
+	auth := anonymousAuth{Mechanism: "ANONYMOUS"}
 	if err := stream.Send(&auth); err != nil {
 		return err
 	}
@@ -184,6 +193,11 @@ type saslAuth struct {
 	XMLName   xml.Name `xml:"urn:ietf:params:xml:ns:xmpp-sasl auth"`
 	Mechanism string   `xml:"mechanism,attr"`
 	Text      string   `xml:",chardata"`
+}
+
+type anonymousAuth struct {
+	XMLName   xml.Name `xml:"urn:ietf:params:xml:ns:xmpp-sasl auth"`
+	Mechanism string   `xml:"mechanism,attr"`
 }
 
 func bindResource(stream *Stream, jid JID) (JID, error) {

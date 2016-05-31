@@ -72,6 +72,25 @@ type Presence struct {
 	Type    string   `xml:"type,attr,omitempty"`
 	To      string   `xml:"to,attr,omitempty"`
 	From    string   `xml:"from,attr,omitempty"`
+	Payload string   `xml:",innerxml"`
+}
+
+type Status struct {
+	XMLName xml.Name `xml:"status"`
+	Text    string   `xml:",chardata"`
+}
+
+func (p *Presence) PayloadDecode(v interface{}) error {
+	return xml.Unmarshal([]byte(p.Payload), v)
+}
+
+func (p *Presence) PayloadEncode(v interface{}) error {
+	bytes, err := xml.Marshal(v)
+	if err != nil {
+		return err
+	}
+	p.Payload = string(bytes)
+	return nil
 }
 
 // XMPP <error/>. May occur as a top-level stanza or embedded in another
