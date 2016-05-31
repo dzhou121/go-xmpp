@@ -32,9 +32,13 @@ type JingleContent struct {
 	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:ice-udp:1 transport"`
 }
 
+type RtcpMux struct {
+}
+
 type JingleDesc struct {
 	Media    string         `xml:"media,attr"`
 	Payloads []*PayloadType `xml:"payload-type"`
+	RtcpMux  RtcpMux        `xml:"rtcp-mux"`
 }
 
 type JingleParameter struct {
