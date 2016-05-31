@@ -27,8 +27,8 @@ func (j Jingle) String() string {
 
 type JingleContent struct {
 	Name        string           `xml:"name,attr"`
-	Description *JingleDesc      `xml:"description"`
-	Transport   *JingleTransport `xml:"transport"`
+	Description *JingleDesc      `xml:"urn:xmpp:jingle:apps:rtp:1 description"`
+	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:ice-udp:1 transport"`
 }
 
 type JingleDesc struct {
