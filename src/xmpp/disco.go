@@ -107,3 +107,13 @@ var DiscoPayloadMatcher = MatcherFunc(
 		return ns == discoNamespacePrefix
 	},
 )
+
+var DiscoInfoPayloadMatcher = MatcherFunc(
+	func(v interface{}) bool {
+		iq, ok := v.(*Iq)
+		if !ok {
+			return false
+		}
+		return iq.PayloadName().Space == nsDiscoInfo
+	},
+)
