@@ -70,13 +70,13 @@ type JingleTransport struct {
 type Candidate struct {
 	Id         string `xml:"id,attr"`
 	Component  string `xml:"component,attr"`
-	Foundation string `xml:"foundation,attr"`
+	Foundation string `xml:"foundation,attr,omitempty"`
 	Generation string `xml:"generation,attr"`
 	Ip         string `xml:"ip,attr"`
-	Network    string `xml:"network,attr"`
+	Network    string `xml:"network,attr,omitempty"`
 	Port       string `xml:"port,attr"`
-	Priority   string `xml:"priority,attr"`
-	Protocol   string `xml:"protocol,attr"`
+	Priority   string `xml:"priority,attr,omitempty"`
+	Protocol   string `xml:"protocol,attr,omitempty"`
 	RelAddr    string `xml:"rel-addr,attr,omitempty"`
 	RelPort    string `xml:"rel-port,attr,omitempty"`
 	Type       string `xml:"type,attr"`
