@@ -29,7 +29,7 @@ type JingleContent struct {
 	Name        string           `xml:"name,attr"`
 	Creator     string           `xml:"creator,attr"`
 	Description *JingleDesc      `xml:"urn:xmpp:jingle:apps:rtp:1 description"`
-	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:ice-udp:1 transport"`
+	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:raw-udp:1 transport"`
 }
 
 type RtcpMux struct {
@@ -61,9 +61,9 @@ type JingleFingerprint struct {
 }
 
 type JingleTransport struct {
-	Pwd         string             `xml:"pwd,attr"`
-	Ufrag       string             `xml:"ufrag,attr"`
-	Fingerprint *JingleFingerprint `xml:"urn:xmpp:jingle:apps:dtls:0 fingerprint"`
+	Pwd         string             `xml:"pwd,attr,omitempty"`
+	Ufrag       string             `xml:"ufrag,attr,omitempty"`
+	Fingerprint *JingleFingerprint `xml:"urn:xmpp:jingle:apps:dtls:0 fingerprint,omitempty"`
 	Candidates  []*Candidate       `xml:"candidate"`
 }
 
