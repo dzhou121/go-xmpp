@@ -29,7 +29,7 @@ type JingleContent struct {
 	Name        string           `xml:"name,attr"`
 	Creator     string           `xml:"creator,attr"`
 	Description *JingleDesc      `xml:"urn:xmpp:jingle:apps:rtp:1 description"`
-	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:raw-udp:1 transport"`
+	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:ice-udp:1 transport"`
 }
 
 type RtcpMux struct {
