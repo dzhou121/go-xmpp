@@ -35,10 +35,20 @@ type JingleContent struct {
 type RtcpMux struct {
 }
 
+type JingleSourceParam struct {
+	Name  string `xml:"name,attr"`
+	Value string `xml:"value,attr"`
+}
+
+type JingleSource struct {
+	Ssrc   string               `xml:"ssrc,attr"`
+	Params []*JingleSourceParam `xml:"parameter"`
+}
+
 type JingleDesc struct {
-	Media    string         `xml:"media,attr"`
-	Payloads []*PayloadType `xml:"payload-type"`
-	RtcpMux  RtcpMux        `xml:"rtcp-mux"`
+	Media    string          `xml:"media,attr"`
+	Payloads []*PayloadType  `xml:"payload-type"`
+	Sources  []*JingleSource `xml:"urn:xmpp:jingle:apps:rtp:ssma:0 source"`
 }
 
 type JingleParameter struct {
