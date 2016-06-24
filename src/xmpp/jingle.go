@@ -26,10 +26,11 @@ func (j Jingle) String() string {
 }
 
 type JingleContent struct {
-	Name        string           `xml:"name,attr"`
-	Creator     string           `xml:"creator,attr"`
-	Description *JingleDesc      `xml:"urn:xmpp:jingle:apps:rtp:1 description"`
-	Transport   *JingleTransport `xml:"urn:xmpp:jingle:transports:ice-udp:1 transport"`
+	Name         string              `xml:"name,attr"`
+	Creator      string              `xml:"creator,attr"`
+	Description  *JingleDesc         `xml:"urn:xmpp:jingle:apps:rtp:1 description"`
+	Transport    *JingleTransport    `xml:"urn:xmpp:jingle:transports:ice-udp:1 transport"`
+	RawTransport *JingleRawTransport `xml:"urn:xmpp:jingle:transports:raw-udp:1 transport"`
 }
 
 type RtcpMux struct {
@@ -68,6 +69,13 @@ type JingleFingerprint struct {
 	Hash  string `xml:"hash,attr"`
 	Setup string `xml:"setup,attr"`
 	Text  string `xml:",chardata"`
+}
+
+type JingleRawTransport struct {
+	Pwd         string             `xml:"pwd,attr,omitempty"`
+	Ufrag       string             `xml:"ufrag,attr,omitempty"`
+	Fingerprint *JingleFingerprint `xml:"urn:xmpp:jingle:apps:dtls:0 fingerprint,omitempty"`
+	Candidates  []*Candidate       `xml:"candidate"`
 }
 
 type JingleTransport struct {
