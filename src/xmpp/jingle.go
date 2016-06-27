@@ -46,10 +46,16 @@ type JingleSource struct {
 	Params []*JingleSourceParam `xml:"parameter"`
 }
 
+type RtpHdrext struct {
+	Id  string `xml:"id,attr"`
+	Uri string `xml:"uri,attr"`
+}
+
 type JingleDesc struct {
-	Media    string          `xml:"media,attr"`
-	Payloads []*PayloadType  `xml:"payload-type"`
-	Sources  []*JingleSource `xml:"urn:xmpp:jingle:apps:rtp:ssma:0 source"`
+	Media      string          `xml:"media,attr"`
+	Payloads   []*PayloadType  `xml:"payload-type"`
+	Sources    []*JingleSource `xml:"urn:xmpp:jingle:apps:rtp:ssma:0 source"`
+	RtpHdrexts []*RtpHdrext    `xml:"urn:xmpp:jingle:apps:rtp:rtp-hdrext:0"`
 }
 
 type JingleParameter struct {
