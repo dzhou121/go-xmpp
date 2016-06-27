@@ -55,7 +55,7 @@ type JingleDesc struct {
 	Media      string          `xml:"media,attr"`
 	Payloads   []*PayloadType  `xml:"payload-type"`
 	Sources    []*JingleSource `xml:"urn:xmpp:jingle:apps:rtp:ssma:0 source"`
-	RtpHdrexts []*RtpHdrext    `xml:"urn:xmpp:jingle:apps:rtp:rtp-hdrext:0"`
+	RtpHdrexts []*RtpHdrext    `xml:"urn:xmpp:jingle:apps:rtp:rtp-hdrext:0 rtp-hdrext"`
 }
 
 type JingleParameter struct {
